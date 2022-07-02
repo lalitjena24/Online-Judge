@@ -6,11 +6,11 @@
 {% if problem %}
 	<h1>{{problem.prob_name}}</h1><br/>
 	<p>{{problem.prob_desc}}</p><br/>
-	
+	<form  method="POST">
+		{{form.as_p}}
 	{% csrf_token %}
-	<input type="file" name="codefile"><br/><br/>
 	<input type="submit" value="Upload">
-	</form> -->
+	</form>
 {% endif %}
 </body>
 </html>
