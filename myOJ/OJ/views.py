@@ -8,6 +8,7 @@ from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.template import loader
 from .forms import SubmitedCode
+from .compilingFunc import compiler
 
 from .models import User,Problem,Test_cases,Submission
 
@@ -23,7 +24,11 @@ def problem_details(request, question_name):
         form = SubmitedCode(request.POST)
         if form.is_valid():
             code = form.cleaned_data['solution']
-            print(code)
+            # if(compiler(code)):
+            #     print("accepted")
+            # else:
+            #     print("Wrong Answer")
+            compiler(code)    
     else:
         form = SubmitedCode()
     template = loader.get_template('OJ/detail.html')
